@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>máy tính google</title>
+</head>
+<style>
+    table{
+        text-align: center;
+    }
+    td{
+        width: 200px;
+        height: 100px;
+    }
+    button{
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+    }
+    .xam{
+        background-color: rgb(255, 126, 21);
+        border-radius: 30px ;
+    }
+    .cam{
+        background-color: rgb(221, 221, 221);
+        border-radius: 70%;
+    }
+    #screen{
+        font-size: 64px;
+        text-align: right;
+    }
+    #bieuthuc{
+        font-size: 20px;
+        text-align: right;
+    }
+    body{
+        background-color: black;
+        color:white;
+    }
+</style>
+<body>
+    <!--xây dựng layout:7 hàng, 4 cột-->
+    <!--cách xây bảng nhanh hơn: emmet cheatsheet-->
+    <!--cellspacing:khoảng cách giữa các td trong table-->
+    <table  align="center" >
+        <tr>
+            <td colspan="4" id='bieuthuc'></td>          
+        </tr>
+        <tr>
+            <td id="screen"colspan="4">0</td>          
+        </tr>
+        <tr>
+            <td><button class="xam" onclick="clickcell('(')">(</button></td>
+            <td><button class="xam" onclick="clickcell(')')">)</button></td>
+            <td><button class="xam" onclick="clickcell('%')">%</button></td>
+            <td><button class="xam" onclick="xoa()">AC</button></td>
+        </tr>
+        <tr>
+            <td><button class="cam" onclick="clickcell(7)">7</button></td>
+            <td><button class="cam" onclick="clickcell(8)">8</button></td>
+            <td><button class="cam" onclick="clickcell(9)">9</button></td>
+            <td><button class="xam" onclick="clickcell('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button class="cam" onclick="clickcell(4)">4</button></td>
+            <td><button class="cam" onclick="clickcell(5)">5</button></td>
+            <td><button class="cam" onclick="clickcell(6)">6</button></td>
+            <td><button class="xam" onclick="clickcell('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button class="cam" onclick="clickcell(1)">1</button></td>
+            <td><button class="cam" onclick="clickcell(2)">2</button></td>
+            <td><button class="cam" onclick="clickcell(3)">3</button></td>
+            <td><button class="xam" onclick="clickcell('*')">x</button></td>
+        </tr>
+        <tr>
+            <td><button class="cam" onclick="clickcell(0)">0</button></td>
+            <td><button class="cam" onclick="clickcell('.')">.</button></td>
+            <td><button class="cam" onclick="tinhtoan()">=</button></td>
+            <td><button class="xam" onclick="clickcell('/')">/</button></td>
+        </tr>
+    </table>
+    <script>
+        function clickcell(so){
+            if (document.getElementById('screen').innerText=='0')
+            { document.getElementById('screen').innerText =so;}
+            else{
+            document.getElementById('screen').innerText +=so;}
+        }
+        function tinhtoan(){
+            let bt=document.getElementById('screen').innerText;
+            let ketqua=eval(bt);//eval: tính giá trị chuỗi kí tự 
+            document.getElementById('bieuthuc').innerText=bt+"=";
+            document.getElementById('screen').innerText=ketqua;
+        }
+        function xoa(){
+            document.getElementById('screen').innerText='';
+            document.getElementById('screen').innerText='0';
+            document.getElementById('bieuthuc').innerText='';
+        }
+    </script>
+</body>
+</html>
